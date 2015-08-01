@@ -15,9 +15,15 @@ Installation is 3 step process
 1. npm install commander-completion
 2  copy/source the `completion.sh` file into your `~/.bashrc` or `~/.zshrc`
 3. add the following 'completion' script to your package.json
+
   ```
-  "completion": "coffee node_modules/commander-completion/index.coffee >/dev/null"
+  // Your scripts definition inside your package.json might look like this:
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "completion": "coffee node_modules/commander-completion/index.coffee >/dev/null"
+  },
   ```
+
 4. run `npm run-script completion` to generate the completion options
 
 
