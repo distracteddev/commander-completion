@@ -1,41 +1,27 @@
 #!/usr/bin/env coffee
 path = require 'path'
 fs = require 'fs'
+exec = require('child_process').exec
 
-FILE_NAME = process.argv.slice(2)[0] || 'cli.coffee'
+FILE_NAME = process.argv.slice(2)[0] || path.resolve(process.cwd(), 'cli.coffee')
 COMMANDER_PATH = path.resolve process.cwd(), FILE_NAME
-COMPLETION_PATH = path.join __dirname, 'bash/completion.sh'
+COMMANDS_PATH = path.join __dirname, 'bash/commands.sh'
+COMMAND_BLACKLIST = ['*']
+removeBlackListedCommands = (cmd) ->
+  return true unless cmd in COMMAND_BLACKLIST
 
-console.log 'building completion file', COMMANDER_PATH, COMPLETION_PATH
+program = require FILE_NAME
 
-completionFnString = """
-if type complete &>/dev/null; then
-  _cli.coffee_completion () {
-    COMPREPLY=()
+commands = (command._name for command in program.commands when command._name)
+commands = commands.filter removeBlackListedCommands
+commands = commands.join ' '
+shortOpts = (option.short for option in program.options when option.short).join ' '
+longOpts = (option.long for option in program.options when option.long).join ' '
 
-    # all available commands
-    COMMANDS="add-account-service-providers add-account-settings add-api-key-access add-application-archivedAt add-application-eeo add-default-email-settings add-default-template-groups add-instructions-to-templates add-is-archived-field add-system-templates-to-group add-user-secret"
-    SHORT_OPTS="-E -S -A -J -s -P -M -q -G -C -U -T -K"
-    LONG_OPTS="--account --file --user"
-
-    # get the current argument on the command line
-    CURRENT_ARG="${COMP_WORDS[COMP_CWORD]}"
-
-    case "$CURRENT_ARG" in
-    --*)
-      COMPREPLY=($(compgen -W "${LONG_OPTS}" -- "${CURRENT_ARG}"))
-      ;;
-    -*)
-      COMPREPLY=($(compgen -W "${SHORT_OPTS}" -- "${CURRENT_ARG}"))
-      ;;
-    *)
-      COMPREPLY=($(compgen -W "${COMMANDS}" -- "${CURRENT_ARG}"))
-      ;;
-    esac
-
-  }
-  complete -F _cli.coffee_completion cli.coffee
-fi
+commandsString = """
+export COMMANDS="#{commands}"
+export SHORT_OPTS="#{shortOpts}"
+export LONG_OPTS="#{longOpts}"
 """
 
-fs.writeFileSync COMPLETION_PATH, completionFnString
+fs.writeFileSync COMMANDS_PATH, commandsString

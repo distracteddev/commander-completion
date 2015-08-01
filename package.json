@@ -12,5 +12,6 @@
     "commander"
   ],
   "author": "Zeus Lalkaka",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
