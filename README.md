@@ -34,4 +34,4 @@ Calling `npm run-script completion` generates a commands.sh file which is used b
 
 This means that whenever you update your CLI with new commands or options, you should re-run `npm run-script completion`.
 
-If you want this done automatically for you, you could add that script to npm lifecycle hooks, git-hooks, or even run the `coffee node_modules/commander-completion/index.coffee` directly from your `/.bashrc`/`/.zshrc`
+If you want this done automatically for you, you could add that script to npm lifecycle hooks, git-hooks, or even run the `coffee node_modules/commander-completion/index.coffee` directly from your `~/.bashrc` or `~/.zshrc`
