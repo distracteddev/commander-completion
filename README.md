@@ -1,6 +1,6 @@
 # Commander-Completion
 
-This module can be used to generate bash/zsh completion functions for a node-commander cli.
+This module can be used to generate bash/zsh completion functions for a [commander.js](https://github.com/tj/commander.js) cli.
 
 # Requirements
 
