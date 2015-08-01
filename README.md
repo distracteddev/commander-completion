@@ -16,7 +16,7 @@ Installation is 3 step process
 2  copy/source the `completion.sh` file into your `~/.bashrc` or `~/.zshrc`
 3. add the following 'completion' script to your package.json
 
-  ```
+  ```javascript
   // Your scripts definition inside your package.json might look like this:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
