@@ -1,0 +1,16 @@
+{
+  "name": "commander-completion",
+  "version": "0.0.1",
+  "description": "Generates a bash compeletion function based on node-commander program instance",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bash",
+    "completion",
+    "commander"
+  ],
+  "author": "Zeus Lalkaka",
+  "license": "ISC"
+}
