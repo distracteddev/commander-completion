@@ -13,7 +13,7 @@ This module can be used to generate bash/zsh completion functions for a node-com
 Installation is 3 step process
 
 1. npm install commander-completion
-2.  copy/source the `completion.sh` file into your `~/.bashrc` or `~/.zshrc`
+2. copy/source the `completion.sh` file into your `~/.bashrc` or `~/.zshrc`
 3. add the following 'completion' script to your package.json
 
   ```javascript
