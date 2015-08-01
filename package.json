@@ -1,5 +1,5 @@
 {
-  "name": "commander-completion",
+  "name": "commander-auto-complete",
   "version": "0.1.0",
   "description": "Generates a bash compeletion function based on node-commander program instance",
   "main": "index.coffee",
